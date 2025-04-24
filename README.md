@@ -5,16 +5,23 @@
 
 # 1, ディレクトリ構成
 ```text
-CN-maritime-sim/
+your_project/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
 └── src/
+    ├── utils.py
+    ├── prediction.py
     ├── agent.py
     ├── env.py
-    ├── prediction.py
-    ├── simulation.py
-    └── utils.py
+    ├── simulation.py     # CLI 引数でモデルを選択できるよう拡張
+    └── models/
+        ├── __init__.py   # モデル名 ↔ クラスを紐付けるファクトリ
+        ├── base_model.py           # 何もせず base をそのまま使うモデル
+        ├── rd_model.py             # R&D.py 相当
+        ├── rd_transition_model.py  # R&D_with_Type_Transition.py 相当
+        ├── rd_no_feebate_model.py  # R&D_without_Feebate.py 相当
+        └── decreasing_feebate_model.py  # decreasing_feebate.py 相当
 ```
 その他のコードは実験で用いたコードになります。
 
