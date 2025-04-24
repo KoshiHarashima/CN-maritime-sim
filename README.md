@@ -3,6 +3,20 @@
 # コードの概要
 東京大学・稗方研究室で行なった「国際海運カーボンニュートラルFeebate評価シミュレーションシステム」の再現実装
 
+# 1, ディレクトリ構成
+```text
+CN-maritime-sim/
+├── README.md
+├── requirements.txt
+├── .gitignore
+└── src/
+    ├── agent.py
+    ├── env.py
+    ├── prediction.py
+    ├── simulation.py
+    └── utils.py
+```
+その他のコードは実験で用いたコードになります。
 
 # 参考文献
 ```text
