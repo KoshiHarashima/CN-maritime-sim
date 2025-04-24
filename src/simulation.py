@@ -107,9 +107,32 @@ class Simulation:
             print("2050年 Oil Ships:", oil_2050)
         else:
             print("（2050年はシミュレーション期間外です）")
+    def main():
+    p = argparse.ArgumentParser()
+    p.add_argument("--model", choices=list(get_model("").keys()), default="base",
+                   help="使用するモデル")
+    p.add_argument("--time", type=int, default=50)
+    p.add_argument("--seed", type=int, default=42)
+    # …その他パラメータも同様に定義…
+    args = p.parse_args()
 
-if __name__ == "__main__":
-    sim = Simulation()
+    AgentCls, EnvCls = get_model(args.model)
+    sim = Simulation(
+        AgentCls, EnvCls,
+        N=4,
+        time=args.time,
+        seed=args.seed,
+        initial_p_green=83.55,
+        initial_p_oil=13.64,
+        initial_pv_green=180,
+        initial_pv_oil=70,
+        initial_fare=144.8,
+        initial_feebate_rate=0.1,
+        feebate_change_rate=0.05
+    )
     sim.run()
     sim.plot()
     sim.validate()
+
+if __name__ == "__main__":
+    main()
